@@ -1,0 +1,55 @@
+{
+  "config": {
+  },
+  "source" : {
+    "file": { "path": "C:/"path"/logons.csv" }
+  },
+  "extractor" : {
+    "csv": {}
+  },
+  "transformers" : [
+
+	{ "vertex": { "class": "Status"}},
+	{ "vertex": { "class": "Domain" }},
+	{ "edge": 	{ "class": "hasDomain", "joinFieldName": "Domain", "lookup": "Status.Domain", "unresolvedLinkAction": "CREATE"}},
+	{ "edge": 	{ "class": "hasNetwork", "joinFieldName": "Type", "lookup": "Status.Type", "unresolvedLinkAction": "CREATE"}},
+	{ "edge": 	{ "class": "useEventID", "joinFieldName": "EventID", "lookup": "Status.EventID", "unresolvedLinkAction": "CREATE"}},
+	{ "edge": 	{ "class": "hasUser", "joinFieldName": "User", "lookup": "Status.User", "unresolvedLinkAction": "CREATE"}},
+	{ "edge": 	{ "class": "useSource", "joinFieldName": "Source", "lookup": "Status.Source", "unresolvedLinkAction": "CREATE"}},
+	{ "edge": 	{ "class": "hasDestination", "joinFieldName": "Destination", "lookup": "Status.Destination", "unresolvedLinkAction": "CREATE"}},
+	{ "edge": 	{ "class": "useLogFile", "joinFieldName": "LogFile", "lookup": "Status.LogFile", "unresolvedLinkAction": "CREATE"}},
+  ],
+  "loader" : {
+    "orientdb": {
+      "dbURL": "plocal:C:/"path"/orientdb-community-2.2.17/databases/CyberAttacks",
+      "dbUser": "admin",
+      "dbPassword": "admin",
+      "dbAutoDropIfExists": true,
+      "dbAutoCreate": true,
+	  "standardElementConstraints": false,
+      "tx": false,
+      "wal": false,
+      "batchCommit": 1000,
+      "dbType": "graph",
+      "classes": 
+	  [
+	  {"name": "Status", "extends":"V"},
+	  {"name": "Domain", "extends":"V"},
+	  {"name": "useDomain", "extends":"E"},
+	  {"name": "hasNetwork", "extends":"E"},
+	  {"name": "useEventID", "extends":"E"},
+	  {"name": "hasUser", "extends":"E"},
+	  {"name": "hasDestination", "extends":"E"},
+	  {"name": "useLogFile", "extends":"E"},
+	  ],
+	  "indexes": 
+	  [
+	  {"class":"Status", "fields":["Domain:string", "Type:string", "AuthProtocol:string", 
+				"LogonType:integer", "Destination:string", 
+				"Source:string", "User:string", "DateTime:string",
+				"LogFile:string", "EventID:integer"], "type":"NOTUNIQUE_HASH_INDEX" },
+	  {"class":"Domain", "fields":["Domain:string"], "type":"NOTUNIQUE_HASH_INDEX" }				
+	  ]
+    }
+  }
+}

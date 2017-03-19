@@ -9,15 +9,15 @@
   },
   "transformers" : [
 
-	{ "vertex": { "class": "Status"}},
-	{ "vertex": { "class": "Domain" }},
-	{ "edge": 	{ "class": "hasDomain", "joinFieldName": "Domain", "lookup": "Status.Domain", "unresolvedLinkAction": "CREATE"}},
-	{ "edge": 	{ "class": "hasNetwork", "joinFieldName": "Type", "lookup": "Status.Type", "unresolvedLinkAction": "CREATE"}},
-	{ "edge": 	{ "class": "useEventID", "joinFieldName": "EventID", "lookup": "Status.EventID", "unresolvedLinkAction": "CREATE"}},
-	{ "edge": 	{ "class": "hasUser", "joinFieldName": "User", "lookup": "Status.User", "unresolvedLinkAction": "CREATE"}},
-	{ "edge": 	{ "class": "useSource", "joinFieldName": "Source", "lookup": "Status.Source", "unresolvedLinkAction": "CREATE"}},
-	{ "edge": 	{ "class": "hasDestination", "joinFieldName": "Destination", "lookup": "Status.Destination", "unresolvedLinkAction": "CREATE"}},
-	{ "edge": 	{ "class": "useLogFile", "joinFieldName": "LogFile", "lookup": "Status.LogFile", "unresolvedLinkAction": "CREATE"}},
+	{ "vertex":{"class":"Status"}},
+	{ "vertex":{"class":"Domain" }},
+	{ "edge":{"class":"hasDomain", "joinFieldName": "Domain", "lookup": "Status.Domain", "unresolvedLinkAction": "CREATE"}},
+	{ "edge":{"class":"hasNetwork", "joinFieldName": "Type", "lookup": "Status.Type", "unresolvedLinkAction": "CREATE"}},
+	{ "edge":{"class":"useEventID", "joinFieldName": "EventID", "lookup": "Status.EventID", "unresolvedLinkAction": "CREATE"}},
+	{ "edge":{"class":"hasUser", "joinFieldName": "User", "lookup": "Status.User", "unresolvedLinkAction": "CREATE"}},
+	{ "edge":{"class":"useSource", "joinFieldName": "Source", "lookup": "Status.Source", "unresolvedLinkAction": "CREATE"}},
+	{ "edge":{"class":"hasDestination", "joinFieldName": "Destination", "lookup": "Status.Destination", "unresolvedLinkAction": "CREATE"}},
+	{ "edge":{"class":"useLogFile", "joinFieldName": "LogFile", "lookup": "Status.LogFile", "unresolvedLinkAction": "CREATE"}},
   ],
   "loader" : {
     "orientdb": {

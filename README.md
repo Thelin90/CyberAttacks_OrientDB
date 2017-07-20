@@ -2,5 +2,7 @@
 
 This json script will create edges between nodes that use different sources and destinations, among other things.
 
-Setup your OrientDB together with the manual that are provided from the developer.
+Start of with going to: https://github.com/Thelin90/CyberAttacks
+
+And follow the instructions in the manual.
 
